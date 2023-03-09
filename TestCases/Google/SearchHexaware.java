@@ -4,10 +4,13 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import execution.DriverHandler;
 import models.Browsers;
 import models.Step;
 import models.TestCase;
@@ -24,13 +27,23 @@ public class SearchHexaware extends TestCase {
 	}
 	
 	private void writeHexawareAndSearch() throws Exception{
-		driver.findElement(Elements.SearchBox).sendKeys("Hexaware", Keys.ENTER);
+		WebElement element =  driver.findElement(Elements.SearchBox);
+		element.sendKeys("Hexaware");
+		
+		DriverHandler.hightlightElement(element);
+		
+		DriverHandler.takeScreenshot("search box");
+		element.sendKeys(Keys.ENTER);
 	}
 	
 	private void waitUntilTitleIsHexaware() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		
 		wait.until(ExpectedConditions.titleContains("Hexaware"));
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0, 1000)");
+		DriverHandler.takeScreenshot("moved");
 	}
 	
 	@Override

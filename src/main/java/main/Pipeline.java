@@ -1,6 +1,7 @@
 package main;
 
 import Google.SearchHexaware;
+import alerts.ValidateText;
 import form.FillForm;
 import models.Browsers;
 import models.TestCase;
@@ -10,7 +11,7 @@ import switchToWindow.SwitchToWindow;
 public class Pipeline {
 
 	public static void main(String[] args) {
-//		TestCase searchHexaChrome = new SearchHexaware(Browsers.Chrome);
+		TestCase searchHexaChrome = new SearchHexaware(Browsers.Chrome);
 //		TestCase searchHexaFirefox = new SearchHexaware(Browsers.Firefox);
 //		TestCase searchHexaEdge = new SearchHexaware(Browsers.Edge);
 		
@@ -19,12 +20,14 @@ public class Pipeline {
 //		TestCase fillFormInF = new FillForm(Browsers.Firefox);
 		
 		
-		TestCase SwitchWin = new SwitchToWindow(Browsers.Chrome);
+		//TestCase SwitchWin = new SwitchToWindow(Browsers.Chrome);
+		
+		TestCase validateAlerts = new ValidateText(Browsers.Chrome);
 		
 		try {
 //			new TestSet(searchHexaChrome, searchHexaEdge).run();
 //			new TestSet(fillFormInChrome, fillFormInF).run();
-			new TestSet(SwitchWin).run();
+			new TestSet(validateAlerts).run();
 					
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
+import execution.DriverHandler;
+
 public class TestCase implements ITestCase {
 	
 	public WebDriver driver;
 	public String name;
 	public Browsers browser;
+	public DriverHandler driverHandler;
 
 	public List<Step> getSteps() {
 		return Arrays.asList();
@@ -17,6 +20,7 @@ public class TestCase implements ITestCase {
 
 	public void setDriver(WebDriver driver) {
 		this.driver = driver;
+		driverHandler = new DriverHandler(driver);
 	}
 	
 }
