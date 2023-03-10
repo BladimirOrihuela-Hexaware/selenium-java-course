@@ -19,7 +19,10 @@ public class Elements {
 	public static By Item3 = By.xpath("//option[@value=\"ms3\"]");
 	public static By Item4 = By.xpath("//option[@value=\"ms4\"]");
 	
+	public static By UploadElement = By.xpath("//input[@name=\"filename\"]");
+	public static By UploadElementByName = By.name("filename");
+	
 	
 	public static By SelectionOptions = By.name("dropdown");
-	public static By Submit = By.name("submitbutton");
+	public static By Submit = By.xpath("//input[@name=\"submitbutton\"][2]");
 }

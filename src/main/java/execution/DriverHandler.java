@@ -1,9 +1,11 @@
 package execution;
 
 import java.io.File;
+import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import models.Browsers;
 
@@ -20,9 +23,21 @@ public class DriverHandler {
 	
 	public static WebDriver driver;
 	public static Browsers browser;
+	public static boolean remote;
 
 	public DriverHandler(WebDriver _driver) {
 		driver = _driver;
+		remote = false;
+	}
+	
+	private static WebDriver startRemoteDriver(MutableCapabilities options) {
+		try {
+			return new RemoteWebDriver(new URL("http://localhost:4444") , options);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.exit(1);
+			return null;
+		}
 	}
 	
 	public static WebDriver getDriver(Browsers _browser) {
@@ -32,13 +47,17 @@ public class DriverHandler {
 		switch(_browser) {
 		case Chrome:
 			ChromeOptions chromeOptions = new ChromeOptions();
-//			chromeOptions.addArguments("--start-maximized");
-			chromeOptions.addArguments("--window-size=360,780");
+			chromeOptions.addArguments("--start-maximized");
+			//chromeOptions.addArguments("--window-size=360,780");
 //			chromeOptions.addArguments("headless"); 
+			if(remote)
+				return startRemoteDriver(chromeOptions);
 			return new ChromeDriver(chromeOptions);
 		case Firefox:
 			FirefoxOptions fireOption = new FirefoxOptions();
-			fireOption.addArguments("--width=360", "--height=780");
+			//fireOption.addArguments("--width=360", "--height=780");
+			if(remote)
+				return startRemoteDriver(fireOption);
 			return new FirefoxDriver(fireOption);
 		case Edge:
 			return new EdgeDriver();

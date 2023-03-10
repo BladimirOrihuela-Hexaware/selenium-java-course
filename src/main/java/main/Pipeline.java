@@ -2,6 +2,7 @@ package main;
 
 import Google.SearchHexaware;
 import alerts.ValidateText;
+import dragAndDrop.DragAndDrop;
 import form.FillForm;
 import models.Browsers;
 import models.TestCase;
@@ -11,18 +12,8 @@ import switchToWindow.SwitchToWindow;
 public class Pipeline {
 
 	public static void main(String[] args) {
-		TestCase searchHexaChrome = new SearchHexaware(Browsers.Chrome);
-//		TestCase searchHexaFirefox = new SearchHexaware(Browsers.Firefox);
-//		TestCase searchHexaEdge = new SearchHexaware(Browsers.Edge);
 		
-		
-//		TestCase fillFormInChrome = new FillForm(Browsers.Chrome);
-//		TestCase fillFormInF = new FillForm(Browsers.Firefox);
-		
-		
-		//TestCase SwitchWin = new SwitchToWindow(Browsers.Chrome);
-		
-		TestCase validateAlerts = new ValidateText(Browsers.Chrome);
+		TestCase validateAlerts = new FillForm(Browsers.Firefox);
 		
 		try {
 //			new TestSet(searchHexaChrome, searchHexaEdge).run();

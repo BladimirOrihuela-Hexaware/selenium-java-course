@@ -13,6 +13,11 @@ public class TestCase implements ITestCase {
 	public String name;
 	public Browsers browser;
 	public DriverHandler driverHandler;
+	
+	public TestCase isRemote() {
+		DriverHandler.remote = true;
+		return this;
+	}
 
 	public List<Step> getSteps() {
 		return Arrays.asList();
