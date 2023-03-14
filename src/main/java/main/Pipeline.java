@@ -13,7 +13,7 @@ public class Pipeline {
 
 	public static void main(String[] args) {
 		
-		TestCase validateAlerts = new FillForm(Browsers.Firefox);
+		TestCase validateAlerts = new FillForm(Browsers.Chrome);
 		
 		try {
 //			new TestSet(searchHexaChrome, searchHexaEdge).run();

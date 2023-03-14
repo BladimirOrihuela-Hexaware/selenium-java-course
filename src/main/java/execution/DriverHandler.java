@@ -47,6 +47,7 @@ public class DriverHandler {
 		switch(_browser) {
 		case Chrome:
 			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.addArguments("--remote-allow-origins=*");
 			chromeOptions.addArguments("--start-maximized");
 			//chromeOptions.addArguments("--window-size=360,780");
 //			chromeOptions.addArguments("headless"); 
