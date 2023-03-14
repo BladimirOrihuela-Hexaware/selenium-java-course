@@ -78,19 +78,19 @@ public class DriverHandler {
 		switch (browser) {
 		case Chrome:
 			property = "webdriver.chrome.driver";
-			path = "C:\\Users\\2000086360\\Documents\\Cursos\\Selenium\\drivers\\chromedriver.exe";
+			path = "pathTo\\chromedriver.exe";
 			break;
 		case Firefox:
 			property = "webdriver.gecko.driver";
-			path = "C:\\Users\\2000086360\\Documents\\Cursos\\Selenium\\drivers\\geckodriver.exe";
+			path = "pathTo\\geckodriver.exe";
 			break;
 		case Edge:
 			property = "webdriver.msedge.driver";
-			path = "C:\\Users\\2000086360\\Documents\\Cursos\\Selenium\\drivers\\msedgedriver.exe";
+			path = "pathTo\\msedgedriver.exe";
 			break;
 		default:
 			property = "webdriver.chrome.driver";
-			path = "C:\\Users\\2000086360\\Documents\\Cursos\\Selenium\\drivers\\chromedriver.exe";
+			path = "pathTo\\chromedriver.exe";
 			break;
 		}
 		System.setProperty(property, path);
@@ -102,7 +102,7 @@ public class DriverHandler {
 	}
 	
 	public static void takeScreenshot(String name) throws Exception {
-		String folder = "C:\\Users\\2000086360\\Documents\\Cursos\\Selenium\\workspace\\selenium-course\\src\\main\\resources\\screenshots\\%s_%s.png";
+		String folder = "pathTo\\screenshots\\%s_%s.png";
 		String path = String.format(folder, name, browser);
 		
 		TakesScreenshot screenshotDriver = (TakesScreenshot)driver;
